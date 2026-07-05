@@ -1,4 +1,4 @@
-const JoinRequest = require("../models/joinRequest");
+const JoinRequest = require("../models/joinrequest");
 
 // Create Join Request
 const createJoinRequest = async (req, res) => {

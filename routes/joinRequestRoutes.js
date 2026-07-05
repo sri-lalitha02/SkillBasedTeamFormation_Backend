@@ -5,7 +5,7 @@ const {
   createJoinRequest,
   getJoinRequests,
   updateJoinRequestStatus,
-} = require("../controllers/joinrequestcontroller");
+} = require("../controllers/joinRequestController");
 
 // Create Join Request
 router.post("/", createJoinRequest);

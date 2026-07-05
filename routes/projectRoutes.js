@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   createProject,
   getProjects,
-} = require("../controllers/projectcontroller");
+} = require("../controllers/projectController");
 
 const protect = require("../middleware/authMiddleware");
 
