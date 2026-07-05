@@ -1,4 +1,4 @@
-const Team = require("../models/Team");
+const Team = require("../models/team");
 const mongoose = require("mongoose");
 const User = require("../models/User");
 const Project = require("../models/project");
