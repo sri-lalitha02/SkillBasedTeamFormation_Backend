@@ -17,6 +17,65 @@ const {
   resetPassword
 } = require("../controllers/authController");
 
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Register a new user
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - firstName
+ *               - lastName
+ *               - email
+ *               - password
+ *               - mobile
+ *               - experience
+ *               - role
+ *               - skills
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *                 example: Lalitha
+ *               lastName:
+ *                 type: string
+ *                 example: Yelisetti
+ *               email:
+ *                 type: string
+ *                 example: lalitha@gmail.com
+ *               password:
+ *                 type: string
+ *                 example: Password123
+ *               mobile:
+ *                 type: string
+ *                 example: "9876543210"
+ *               experience:
+ *                 type: string
+ *                 example: Beginner
+ *               role:
+ *                 type: string
+ *                 example: Student
+ *               skills:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 example:
+ *                   - React
+ *                   - Node.js
+ *                   - MongoDB
+ *     responses:
+ *       201:
+ *         description: User registered successfully
+ *       400:
+ *         description: Validation error
+ */
+
 // Register
 router.post(
   "/register",
@@ -62,6 +121,36 @@ router.post(
   registerUser
 );
 
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Login User
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: lalitha@gmail.com
+ *               password:
+ *                 type: string
+ *                 example: Password123
+ *     responses:
+ *       200:
+ *         description: Login successful
+ *       401:
+ *         description: Invalid email or password
+ */
+
 // Login
 router.post(
   "/login",
@@ -77,12 +166,52 @@ router.post(
   loginUser
 );
 
+/**
+ * @swagger
+ * /api/auth/logout:
+ *   post:
+ *     summary: Logout User
+ *     tags:
+ *       - Authentication
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: User logged out successfully
+ *       401:
+ *         description: Unauthorized
+ */
+
 // Logout
 router.post(
   "/logout",
   protect,
   logoutUser
 );
+
+/**
+ * @swagger
+ * /api/auth/send-otp:
+ *   post:
+ *     summary: Send OTP to email
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: lalitha@gmail.com
+ *     responses:
+ *       200:
+ *         description: OTP sent successfully
+ *       400:
+ *         description: Invalid email
+ */
 
 // OTP
 router.post(
@@ -94,6 +223,33 @@ router.post(
   ],
   sendOtp
 );
+
+/**
+ * @swagger
+ * /api/auth/verify-otp:
+ *   post:
+ *     summary: Verify OTP
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: lalitha@gmail.com
+ *               otp:
+ *                 type: string
+ *                 example: "123456"
+ *     responses:
+ *       200:
+ *         description: OTP verified successfully
+ *       400:
+ *         description: Invalid OTP
+ */
 
 // verify otp
 router.post(
@@ -109,6 +265,33 @@ router.post(
   ],
   verifyOtp
 );
+
+/**
+ * @swagger
+ * /api/auth/reset-password:
+ *   post:
+ *     summary: Reset user password
+ *     tags:
+ *       - Authentication
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 example: lalitha@gmail.com
+ *               newPassword:
+ *                 type: string
+ *                 example: NewPassword123
+ *     responses:
+ *       200:
+ *         description: Password reset successfully
+ *       400:
+ *         description: Reset password failed
+ */
 
 // Reset Password
 router.post(
