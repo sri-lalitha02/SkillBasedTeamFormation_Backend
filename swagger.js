@@ -16,7 +16,7 @@ const options = {
         description: "Local Server",
       },
       {
-        url: "https://skillbasedteamformation-backend.onrender.com",
+        url: "https://skillbasedteamformation-backend-1.onrender.com",
         description: "Production Server",
       },
     ],
@@ -38,7 +38,7 @@ const options = {
     ],
   },
 
-  apis: ["./routes/*.js"], // Reads Swagger comments from all route files
+  apis: [__dirname + "/routes/*.js"],
 };
 
 const specs = swaggerJsdoc(options);

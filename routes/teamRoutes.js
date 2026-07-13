@@ -228,11 +228,70 @@ router.put("/:id", protect, updateTeam);
 // DELETE TEAM
 router.delete("/:id", protect, deleteTeam);
 
-// LEAVE TEAM
+/**
+ * @swagger
+ * /api/teams/leave/{id}:
+ *   put:
+ *     summary: Leave a team
+ *     tags:
+ *       - Teams
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Left team successfully
+ */
+
 router.put("/leave/:id", protect, leaveTeam);
+
+/**
+ * @swagger
+ * /api/teams/add-member/{id}:
+ *   put:
+ *     summary: Add a member to a team
+ *     tags:
+ *       - Teams
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Member added successfully
+ */
 
 // ADD MEMBER
 router.put("/add-member/:id", protect, addMember);
+
+/**
+ * @swagger
+ * /api/teams/remove-member/{id}:
+ *   put:
+ *     summary: Remove a member from a team
+ *     tags:
+ *       - Teams
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Member removed successfully
+ */
 
 // REMOVE MEMBER
 router.put("/remove-member/:id", protect, removeMember);
